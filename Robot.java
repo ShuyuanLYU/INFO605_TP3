@@ -1,20 +1,12 @@
 
 public class Robot {
-	// private String nom;
+
 	private Table table;
 	private Cube cubeTenu;
 
 	public Robot(Table table) {
 		this.table = table;
 	}
-
-	// private String getNom() {
-	// return this.nom;
-	// }
-
-	// private void setNom(String nom) {
-	// this.nom = nom;
-	// }
 
 	private Cube getCubetenu() {
 		return this.cubeTenu;
@@ -26,11 +18,10 @@ public class Robot {
 
 	public void creerCube(Couleur couleur, TailleCube taille) {
 		if (vériMainVide()) {
-			Cube cubeCréé = new Cube(couleur, taille);
-			setCubetenu(cubeCréé);
-			System.out.println(cubeTenu.toString() + " est bien crée.");
-		}
-		System.out.println("(°_°)\nMalheureusement! Main occupé.");
+			setCubetenu(new Cube(couleur, taille));
+			System.out.println("(^_^)" + cubeTenu.toString() + " est bien crée.\n");
+		} else
+			System.out.println("(°_°) Malheureusement! Main occupé.\n");
 	}
 
 	public void tenirCube(Cube cubeTenu) {
@@ -43,11 +34,11 @@ public class Robot {
 
 	public void poserSurTable() {
 		if (!vériMainVide()) {
-			System.out.println(cubeTenu.toString() + "est posé sur la table.");
+			System.out.println("(^_^)" + cubeTenu.toString() + " est posé sur la table.\n");
 			table.ajouterCube(cubeTenu);
 			lacher();
 		} else {
-			System.out.println("(=_=)\nRobot ne tient rien, il ne peut pas poser.");
+			System.out.println("(=_=) Robot ne tient rien, il ne peut pas poser.\n");
 		}
 	}
 
@@ -58,21 +49,32 @@ public class Robot {
 	public void prendre(TailleCube taille, Couleur couleur) {
 		if (vériMainVide()) {
 			cubeTenu = table.enlèveCube(taille, couleur);
-		}
+			System.out.println((cubeTenu == null ? "(`_°) Il y a pas de cube correspondant.\n"
+					: "(^_^)" + "Bien trouvé " + cubeTenu.toString() + "\n"));
+		} else
+			System.out.println("(°o°) Malheureusement! Main occupé.\n");
 	}
 
 	public void poserSurCube(TailleCube taille, Couleur couleur) {
 		if (!vériMainVide() && cubeTenu.poserPossible(taille) && table.mettreSurCube(taille, couleur, cubeTenu)) {
+			System.out.println("(^_^)" + cubeTenu.toString() + " est bien posé.\n");
 			lacher();
-		}
+		} else if (vériMainVide())
+			System.out.println("(>_<) Robot ne tient rien. Il ne peut pas poser.\n");
+		else if (!cubeTenu.poserPossible(taille))
+			System.out.println(
+					"(@_@) " + cubeTenu.toString() + " ne peut pas poser sur un " + taille.name() + " cube.\n");
+		else
+			System.out.println("(?_?) Il y a pas ce type de cube sur la table.\n");
+
 	}
 
 	public void detruireCube() {
 		if (!vériMainVide()) {
-			System.out.println(cubeTenu.toString() + " est bien détuit.");
+			System.out.println("(^_^)" + cubeTenu.toString() + " est bien détuit.\n");
 			this.cubeTenu = null;
 		} else {
-			System.out.println("(O_o)\nRobot ne tient rien, échec de détuire.");
+			System.out.println("(O_o) Robot ne tient rien, échec de détuire.\n");
 		}
 
 	}
@@ -88,16 +90,16 @@ public class Robot {
 		}
 
 		if (vériMainVide()) {
-			System.out.println("   +---+");
+			System.out.println("   _____");
 			System.out.println("+--|   |");
 			System.out.println("|  |   |");
 		} else {
 			// premier ligne
-			System.out.print("   +");
+			System.out.print("   _");
 			for (int i = 0; i < cubeTenu.premierLigne().length(); i++) {
-				System.out.print("-");
+				System.out.print("_");
 			}
-			System.out.println("+");
+			System.out.println("_");
 			// dexieme ligne
 			System.out.print("+--|");
 			System.out.print(cubeTenu.premierLigne());

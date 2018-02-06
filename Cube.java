@@ -2,7 +2,6 @@
 public class Cube {
 	private Couleur couleur;
 	private TailleCube taille;
-	// private int numéro;
 	private Cube cubeDessous;
 
 	private final String str_grand = "+---+\n|___|";
@@ -47,11 +46,18 @@ public class Cube {
 	}
 
 	public String toString() {
-		String strCube = taille.name() + " cube " + couleur.name();
+		return taille.name() + " cube " + couleur.name();
+	}
+	
+	public String toDessinAll() {
+		String str = toDessin();
+		Cube tmp = cubeDessous;
+		while(tmp != null) {
+			str += "\n" + tmp.toDessin();
+			tmp = tmp.getCubeDessous();
+		}
+		return str;
 		
-//		String strCubeDessous = (cubeDessous != null) ? cubeDessous.toString() : "";
-		return strCube;
-
 	}
 	
 	public String toDessin() {
@@ -63,7 +69,6 @@ public class Cube {
 		else
 			strCube = str_petit + taille.name() + " " + couleur.name();
 		return strCube;
-
 	}
 
 	public String premierLigne() {

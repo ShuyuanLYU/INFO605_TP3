@@ -47,25 +47,22 @@ public class Table {
     	if (cubeRecherche != null) {
     		suppCube(cubeRecherche);
     		ajouterCube(cubeTenu);
+    		cubeTenu.setCubeDessous(cubeRecherche);
     	}
     	return cubeRecherche != null;
     }
 
 	public void afficherTable() {
-		//int size = listCubes.size();
 		System.out.println("Dans la table, il y a " + listCubes.size() + " cube(s).");
 		Cube cube;
 		int compte = 1;
 		Iterator<Cube> it = listCubes.iterator();
     	while(it.hasNext()){
-    		System.out.println("cube N°" + compte + ": ");
+    		System.out.println("-> Cube N°" + compte + ": ");
     		cube = it.next();
-    	    System.out.println(cube.toDessin()); 
-    	    while(cube.getCubeDessous() != null) {
-    	    	cube = cube.getCubeDessous();
-    	    	System.out.println(cube.toDessin()); 
-    	    }
+    	    System.out.println(cube.toDessinAll()); 
     	    compte++;
+    	    System.out.println();
     	}
 	    
 		
