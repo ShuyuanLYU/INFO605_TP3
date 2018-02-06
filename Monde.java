@@ -41,7 +41,7 @@ public class Monde {
 			break;
 		case '2':
 			System.out.println("Le cube tenu par le robot va être détruit ");
-			Keyboard.pause();
+//			Keyboard.pause();
 			D2R2.detruireCube();
 			break;
 		case '4':

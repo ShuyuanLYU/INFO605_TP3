@@ -64,8 +64,11 @@ public class Robot {
 
 	public void detruireCube() {
 		if (!vériMainVide()) {
+			System.out.println(cubeTenu.toString() + "est bien détuit.");
 			this.cubeTenu = null;
-			System.out.println(x);
+		}
+		else {
+			System.out.println("Robot ne tient rien, échec de détuire.");
 		}
 			
 	}
