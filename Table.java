@@ -60,7 +60,12 @@ public class Table {
     	while(it.hasNext()){
     		System.out.println("cube N°" + compte + ": ");
     		cube = it.next();
-    	    System.out.println(cube.toString()); 
+    	    System.out.println(cube.toDessin()); 
+    	    while(cube.getCubeDessous() != null) {
+    	    	cube = cube.getCubeDessous();
+    	    	System.out.println(cube.toDessin()); 
+    	    }
+    	    compte++;
     	}
 	    
 		

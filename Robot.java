@@ -28,7 +28,9 @@ public class Robot {
 		if (vériMainVide()) {
 			Cube cubeCréé = new Cube(couleur, taille);
 			setCubetenu(cubeCréé);
+			System.out.println(cubeTenu.toString() + " est bien crée.");
 		}
+		System.out.println("(°_°)\nMalheureusement! Main occupé.");
 	}
 
 	public void tenirCube(Cube cubeTenu) {
@@ -67,7 +69,7 @@ public class Robot {
 
 	public void detruireCube() {
 		if (!vériMainVide()) {
-			System.out.println(cubeTenu.toString() + "est bien détuit.");
+			System.out.println(cubeTenu.toString() + " est bien détuit.");
 			this.cubeTenu = null;
 		} else {
 			System.out.println("(O_o)\nRobot ne tient rien, échec de détuire.");
@@ -80,9 +82,35 @@ public class Robot {
 		if (vériMainVide())
 			System.out.println("ne tient rien.");
 		else {
-			System.out
-					.println("tient un " + cubeTenu.getTaille().name() + " cube " + cubeTenu.getCouleur().name() + ".");
+			System.out.print("tient un ");
+			System.out.println(cubeTenu.getTaille().name() + " cube " + cubeTenu.getCouleur().name() + ".");
+
 		}
+
+		if (vériMainVide()) {
+			System.out.println("   +---+");
+			System.out.println("+--|   |");
+			System.out.println("|  |   |");
+		} else {
+			// premier ligne
+			System.out.print("   +");
+			for (int i = 0; i < cubeTenu.premierLigne().length(); i++) {
+				System.out.print("-");
+			}
+			System.out.println("+");
+			// dexieme ligne
+			System.out.print("+--|");
+			System.out.print(cubeTenu.premierLigne());
+			System.out.println("|");
+			// troisieme ligne
+			System.out.print("|  |");
+			System.out.print(cubeTenu.dexiemeLigne());
+			System.out.println("|");
+		}
+		System.out.println("|");
+		System.out.println("|");
+		System.out.println("-----");
+
 	}
 	// void setCubeTenu(Cube value) {
 	// this.cubeTenu = value;

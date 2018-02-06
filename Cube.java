@@ -4,7 +4,7 @@ public class Cube {
 	private TailleCube taille;
 	// private int numéro;
 	private Cube cubeDessous;
-	
+
 	private final String str_grand = "+---+\n|___|";
 	private final String str_moyen = "+--+\n|__|";
 	private final String str_petit = "+-+\n|_|";
@@ -47,16 +47,55 @@ public class Cube {
 	}
 
 	public String toString() {
+		String strCube = taille.name() + " cube " + couleur.name();
+		
+//		String strCubeDessous = (cubeDessous != null) ? cubeDessous.toString() : "";
+		return strCube;
+
+	}
+	
+	public String toDessin() {
 		String strCube;
 		if (taille.ordinal() == 0)
 			strCube = str_grand + taille.name() + " " + couleur.name();
-		else if(taille.ordinal() == 1)
+		else if (taille.ordinal() == 1)
 			strCube = str_moyen + taille.name() + " " + couleur.name();
 		else
 			strCube = str_petit + taille.name() + " " + couleur.name();
-		String strCubeDessous = (cubeDessous != null) ? cubeDessous.toString() : "";
-		return strCube + strCubeDessous;
+		return strCube;
 
+	}
+
+	public String premierLigne() {
+		String str = null;
+		switch (taille.ordinal()) {
+		case 0:
+			str = "+---+";
+			break;
+		case 1:
+			str = "+--+";
+			break;
+		case 2:
+			str = "+-+";
+			break;
+		}
+		return str;
+	}
+	
+	public String dexiemeLigne() {
+		String str = null;
+		switch (taille.ordinal()) {
+		case 0:
+			str = "|___|";
+			break;
+		case 1:
+			str = "|__|";
+			break;
+		case 2:
+			str = "|_|";
+			break;
+		}
+		return str;
 	}
 
 }
