@@ -41,8 +41,11 @@ public class Robot {
 
 	public void poserSurTable() {
 		if (!vériMainVide()) {
+			System.out.println(cubeTenu.toString() + "est posé sur la table.");
 			table.ajouterCube(cubeTenu);
 			lacher();
+		} else {
+			System.out.println("(=_=)\nRobot ne tient rien, il ne peut pas poser.");
 		}
 	}
 
@@ -66,11 +69,10 @@ public class Robot {
 		if (!vériMainVide()) {
 			System.out.println(cubeTenu.toString() + "est bien détuit.");
 			this.cubeTenu = null;
+		} else {
+			System.out.println("(O_o)\nRobot ne tient rien, échec de détuire.");
 		}
-		else {
-			System.out.println("Robot ne tient rien, échec de détuire.");
-		}
-			
+
 	}
 
 	public void afficherRobot() {

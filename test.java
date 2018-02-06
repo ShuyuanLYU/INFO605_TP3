@@ -13,6 +13,8 @@ public class test {
 		System.out.println(cube3.toString());
 		
 		Table table = new Table();
+		Robot robot = new Robot(table);
+		robot.poserSurTable();
 		
 
 	}
