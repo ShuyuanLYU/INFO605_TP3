@@ -1,4 +1,4 @@
-import in.keyboard.Keyboard;
+import java.util.Scanner;
 
 public class Monde {
 
@@ -32,15 +32,16 @@ public class Monde {
 			System.out.println("f - fin du monde");
 			System.out.println("--------------------------------");
 			System.out.print("Votre choix : ");
-			c = Keyboard.getChar();
+			String input = new Scanner(System.in).next();
+			c = input.charAt(0);
 			switch (c) {
 			case '1':
 				if (D2R2.vériMainVide()) {
 					System.out.print("Couleur du cube : ");
-					coul = Couleur.getCouleur(Keyboard.getString());
+					coul = Couleur.getCouleur(new Scanner(System.in).next());
 					// ecrire (coul, "couleur saisie");
 					System.out.print("Taille (grand/moyen/petit) : ");
-					tc = TailleCube.getTaille(Keyboard.getString());
+					tc = TailleCube.getTaille(new Scanner(System.in).next());
 				}
 				D2R2.creerCube(coul, tc);
 				break;
@@ -52,10 +53,10 @@ public class Monde {
 			case '3':
 				if (D2R2.vériMainVide()) {
 					System.out.print("Couleur du cube : ");
-					coul = Couleur.getCouleur(Keyboard.getString());
+					coul = Couleur.getCouleur(new Scanner(System.in).next());
 					// ecrire (coul, "couleur saisie");
 					System.out.print("Taille (grand/moyen/petit) : ");
-					tc = TailleCube.getTaille(Keyboard.getString());
+					tc = TailleCube.getTaille(new Scanner(System.in).next());
 				}
 				D2R2.prendre(tc, coul);
 				break;
@@ -67,10 +68,10 @@ public class Monde {
 			case '5':
 				if (!D2R2.vériMainVide()) {
 					System.out.print("Couleur du cube : ");
-					coul = Couleur.getCouleur(Keyboard.getString());
+					coul = Couleur.getCouleur(new Scanner(System.in).next());
 					// ecrire (coul, "couleur saisie");
 					System.out.print("Taille (grand/moyen/petit) : ");
-					tc = TailleCube.getTaille(Keyboard.getString());
+					tc = TailleCube.getTaille(new Scanner(System.in).next());
 				}
 				D2R2.poserSurCube(tc, coul);
 				break;
